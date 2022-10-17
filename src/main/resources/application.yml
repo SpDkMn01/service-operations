@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: service-operation
+  data:
+    mongodb:
+      database: bootcamp_operation_db
+      host: localhost
+      port: 8092
+  config:
+    import: optional:configserver:http://localhost:8888
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+server:
+  port: 8003
+message:
+  path-operation: /api/v1/operations
+  path-operationType: /api/v1/operationTypes
