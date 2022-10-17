@@ -18,3 +18,5 @@ server:
 message:
   path-operation: /api/v1/operations
   path-operationType: /api/v1/operationTypes
+  uri: /api/v1/operationTypes
+  uri2: /api/v1/customerProductsPassive

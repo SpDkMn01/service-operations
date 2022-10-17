@@ -6,10 +6,13 @@ import com.nttdata.bootcamp.project.Operations.dto.OperationTypeDtoRequest;
 import com.nttdata.bootcamp.project.Operations.dto.OperationTypeDtoResponse;
 import com.nttdata.bootcamp.project.Operations.entity.Operation;
 import com.nttdata.bootcamp.project.Operations.entity.OperationType;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
-
+@AllArgsConstructor
 public class OperationMapper implements IOperationMapper
 {
+    private String uri;
+    private String uri2;
     @Override
     public OperationDtoRequest toDtoRequest(Operation operation) {
         OperationDtoRequest operationDtoRequest = new OperationDtoRequest();
@@ -28,6 +31,8 @@ public class OperationMapper implements IOperationMapper
     public OperationDtoResponse toDtoResponse(Operation operation) {
         OperationDtoResponse operationDtoResponse = new OperationDtoResponse();
         BeanUtils.copyProperties(operation, operationDtoResponse);
+        operationDtoResponse.setOperationTypeUrl(uri + operation.getOperationTypeId());
+        operationDtoResponse.setCustomerProductPassiveUrl(uri2 + operation.getCustomerProductPassiveId());
         return operationDtoResponse;
     }
 }

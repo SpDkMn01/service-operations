@@ -12,5 +12,5 @@ public class OperationDtoResponse
     private String id;
     private String operationTypeUrl;
     private String customerProductPassiveUrl;
-    private double mount;
+    private double amount;
 }

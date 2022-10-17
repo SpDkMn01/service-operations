@@ -9,8 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class OperationDtoRequest
 {
-    private String id;
     private String operationTypeId;
     private String customerProductPassiveId;
-    private double mount;
+    private double amount;
 }

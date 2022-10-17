@@ -8,6 +8,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OperationTypeDtoRequest {
-    private String id;
     private String description;
 }

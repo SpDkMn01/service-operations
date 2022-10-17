@@ -16,18 +16,18 @@ import reactor.core.publisher.Mono;
 public class OperationTypeService
         implements IOperationTypeService<OperationTypeDtoRequest, OperationTypeDtoResponse> {
     @Autowired
-    private final IOperationTypeRepository operationTypeRepository;
+    private final IOperationTypeRepository repository;
     @Override
     public Flux<OperationTypeDtoResponse> getAll() {
         IOperationTypeMapper mapper = new OperationTypeMapper();
-        return operationTypeRepository.findAll()
+        return repository.findAll()
                 .map(mapper::toDtoResponse);
     }
     @Override
     public Mono<OperationTypeDtoResponse> getById(String id)
     {
         IOperationTypeMapper mapper = new OperationTypeMapper();
-        return operationTypeRepository.findById(id)
+        return repository.findById(id)
                 .map(mapper::toDtoResponse);
     }
     @Override
@@ -35,24 +35,24 @@ public class OperationTypeService
     {
         IOperationTypeMapper mapper = new OperationTypeMapper();
         return object.map(mapper::toEntity)
-                .flatMap(operationTypeRepository::insert)
+                .flatMap(repository::insert)
                 .map(mapper::toDtoResponse);
     }
     @Override
     public Mono<OperationTypeDtoResponse> update(Mono<OperationTypeDtoRequest> object, String id)
     {
         IOperationTypeMapper mapper = new OperationTypeMapper();
-        return operationTypeRepository.findById(id)
+        return repository.findById(id)
                 .flatMap(
                         p -> object.map(mapper::toEntity)
                                 .doOnNext(e -> e.setId(id))
                 )
-                .flatMap(operationTypeRepository::save)
+                .flatMap(repository::save)
                 .map(mapper::toDtoResponse);
     }
     @Override
     public Mono<Void> delete(String id)
     {
-        return operationTypeRepository.deleteById(id);
+        return repository.deleteById(id);
     }
 }

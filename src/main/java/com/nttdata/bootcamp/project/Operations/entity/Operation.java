@@ -16,5 +16,5 @@ public class Operation
     private String id;
     private String operationTypeId;
     private String customerProductPassiveId;
-    private double mount;
+    private double amount;
 }

@@ -2,6 +2,7 @@ package com.nttdata.bootcamp.project.Operations.controller;
 
 import com.nttdata.bootcamp.project.Operations.dto.OperationDtoRequest;
 import com.nttdata.bootcamp.project.Operations.dto.OperationDtoResponse;
+import com.nttdata.bootcamp.project.Operations.service.IOperationService;
 import com.nttdata.bootcamp.project.Operations.service.OperationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,29 +20,29 @@ import reactor.core.publisher.Mono;
 public class OperationController
 {
     @Autowired
-    private OperationService service;
+    private IOperationService service;
     @GetMapping
-    public Flux<OperationDtoResponse> getProductTypes()
+    public Flux<OperationDtoResponse> getAll()
     {
         return service.getAll();
     }
     @GetMapping("/{id}")
-    public Mono<OperationDtoResponse> getProductType(@PathVariable String id)
+    public Mono<OperationDtoResponse> getById(@PathVariable String id)
     {
         return service.getById(id);
     }
     @PostMapping
-    public Mono<OperationDtoResponse> saveProductType(@RequestBody Mono<OperationDtoRequest> operationDtoRequest)
+    public Mono<OperationDtoResponse> save(@RequestBody Mono<OperationDtoRequest> requestMono)
     {
-        return service.save(operationDtoRequest);
+        return service.save(requestMono);
     }
     @PutMapping("/update/{id}")
-    public Mono<OperationDtoResponse> updateProductType(@RequestBody Mono<OperationDtoRequest> operationDtoRequest, @PathVariable String id)
+    public Mono<OperationDtoResponse> update(@RequestBody Mono<OperationDtoRequest> requestMono, @PathVariable String id)
     {
-        return service.update(operationDtoRequest,id);
+        return service.update(requestMono,id);
     }
     @DeleteMapping("/delete/{id}")
-    public Mono<Void> deleteProduct(@PathVariable String id)
+    public Mono<Void> delete(@PathVariable String id)
     {
         return service.delete(id);
     }
