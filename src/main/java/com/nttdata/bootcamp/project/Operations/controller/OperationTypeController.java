@@ -3,7 +3,6 @@ package com.nttdata.bootcamp.project.Operations.controller;
 import com.nttdata.bootcamp.project.Operations.dto.OperationTypeDtoRequest;
 import com.nttdata.bootcamp.project.Operations.dto.OperationTypeDtoResponse;
 import com.nttdata.bootcamp.project.Operations.service.IOperationTypeService;
-import com.nttdata.bootcamp.project.Operations.service.OperationTypeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,12 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
+/**
+ * <h1>OperationType Controller</h1>
+ * @Author Grupo06
+ * @version 1.0
+ * @since 2022-10-18
+ */
 @Slf4j
 @RequiredArgsConstructor
 @RestController

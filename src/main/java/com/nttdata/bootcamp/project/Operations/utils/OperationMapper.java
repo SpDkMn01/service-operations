@@ -2,16 +2,24 @@ package com.nttdata.bootcamp.project.Operations.utils;
 
 import com.nttdata.bootcamp.project.Operations.dto.OperationDtoRequest;
 import com.nttdata.bootcamp.project.Operations.dto.OperationDtoResponse;
-import com.nttdata.bootcamp.project.Operations.dto.OperationTypeDtoRequest;
-import com.nttdata.bootcamp.project.Operations.dto.OperationTypeDtoResponse;
 import com.nttdata.bootcamp.project.Operations.entity.Operation;
-import com.nttdata.bootcamp.project.Operations.entity.OperationType;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
-@AllArgsConstructor
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+/**
+ * <h1>Operation Mapper</h1>
+ * @Author Grupo06
+ * @version 1.0
+ * @since 2022-10-18
+ */
+@RequiredArgsConstructor
+@Component
 public class OperationMapper implements IOperationMapper
 {
+    @Value("${message.uri}")
     private String uri;
+    @Value("${message.uri2}")
     private String uri2;
     @Override
     public OperationDtoRequest toDtoRequest(Operation operation) {
