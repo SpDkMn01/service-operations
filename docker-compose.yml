@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+  db_operation:
+    image: mongo
+    container_name: db_operation
+    ports:
+      - "27020:27017"
+    environment:
+      - "MONGO_INITDB_DATABASE=bootcamp_operation_db"
+  service-operation:
+    image: service-operations
+    container_name: service-operation
+    depends_on:
+      - db_operation
+    ports:
+      - "8006:8000"

@@ -4,19 +4,23 @@ spring:
   data:
     mongodb:
       database: bootcamp_operation_db
-      host: localhost
-      port: 8903
+      host: db_operation
+      port: 27017
   config:
-    import: optional:configserver:http://localhost:9080
+    import: optional:configserver:http://192.168.31.220:8002
 management:
   endpoints:
     web:
       exposure:
         include: "*"
 server:
-  port: 8003
+  port: 8000
 message:
   path-operation: /api/v1/operations
   path-operationType: /api/v1/operationTypes
   uri: /api/v1/operationTypes
   uri2: /api/v1/customerProductsPassive
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.31.220:8000/eureka/
